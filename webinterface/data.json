@@ -1,8 +1,8 @@
 {
   "name":"@oT",
-  "ip":"",
-  "port":"",
-  "delay":"16",
+  "ip":"192.168.2.110",
+  "port":"11337",
+  "delay":"60",
   "devices":[
     {
       "name":"fan",

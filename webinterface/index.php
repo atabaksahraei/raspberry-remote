@@ -6,6 +6,10 @@
  * webinterface
  *
 */
+
+$target = '192.168.2.110';
+$port = 11337;
+
 function daemon_send($target, $port, $output)
 {
     $fp = fsockopen($target, $port, $errno, $errstr, 30) or die("$errstr ($errno)\n");
