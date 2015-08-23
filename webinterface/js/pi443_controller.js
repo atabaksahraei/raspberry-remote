@@ -20,8 +20,8 @@ pi443App.controller('pi443Ctrl',
                 console.log("turn off");
                 device.state = "0";
             }
-            var location='?group='+device.region+'&switch='+device.deviceId+"&action="+device.state+"delay="+device.delay;
-            window.location = location;
+            var location='?group='+device.region+'&switch='+device.deviceId+'&action='+device.state+'delay='+device.delay;
+           // window.location = location;
             console.info(location);
         }
     });
