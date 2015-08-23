@@ -1,0 +1,22 @@
+{
+  "name":"@oT",
+  "ip":"",
+  "port":"",
+  "delay":"16",
+  "devices":[
+    {
+      "name":"fan",
+      "type":"fan",
+      "region":"11111",
+      "deviceId":"2",
+      "state":"0"
+    },
+    {
+      "name":"meine Lampe",
+      "type":"lamp",
+      "region":"11111",
+      "deviceId":"4",
+      "state":"1"
+    }
+  ]
+}

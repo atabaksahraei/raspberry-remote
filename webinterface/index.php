@@ -6,8 +6,6 @@
  * webinterface
  *
 */
-
-
 function daemon_send($target, $port, $output)
 {
     $fp = fsockopen($target, $port, $errno, $errstr, 30) or die("$errstr ($errno)\n");
@@ -20,14 +18,6 @@ function daemon_send($target, $port, $output)
     fclose($fp);
     return $state;
 }
-
-
-/*
- * get configuration
- * don't forget to edit config.php
- */
-require 'config.php';
-
 /*
  * get parameters
  */
@@ -39,8 +29,6 @@ if (isset($_GET['action'])) $nAction=$_GET['action'];
 else $nAction="";
 if (isset($_GET['delay'])) $nDelay=$_GET['delay'];
 else $nDelay=0;
-
-
 /*
  * actually send to the daemon
  * then reload the webpage without parameters
@@ -53,91 +41,44 @@ if (strlen($output) >= 8) {
   exit();
 }
 ?>
-<html>
-  <head>
-    <title>raspberry</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon"
-          type="image/png"
-          href="favicon.png">
-    <meta name="viewport"
-          content="
-              height = device-height,
-              width = device-width,
-              initial-scale = 1.0,
-              user-scalable = no ,
-              target-densitydpi = device-dpi
-              " />
-  </head>
-<body>
-<?php
-/*
- * links to change the delay
- */
-echo "<P>Delay: ";
-echo "<A";
-if ($nDelay == 0) echo " class=\"bold\"";
-echo " HREF=\"index.php?delay=0\">0</A> | ";
-echo "<A";
-if ($nDelay == 5) echo " class=\"bold\"";
-echo " HREF=\"index.php?delay=5\">5</A> | ";
-echo "<A";
-if ($nDelay == 15) echo " class=\"bold\"";
-echo " HREF=\"index.php?delay=15\">15</A> | ";
-echo "<A";
-if ($nDelay == 30) echo " class=\"bold\"";
-echo " HREF=\"index.php?delay=30\">30</A> | ";
-echo "<A";
-if ($nDelay == 60) echo " class=\"bold\"";
-echo " HREF=\"index.php?delay=60\">60</A> ";
-echo "</P>";
+<!DOCTYPE html>
+< lang="de" ng-app="pi443App">
+<head>
+    <meta charset="utf-8">
+    <title>Pi443</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/pi443.css" rel="stylesheet" media="screen">
+    <script src="js/angular.min.js"></script>
+</head>
+< ng-controller="pi443Ctrl">
+<h1>{{data.name}}</h1>
+<div class="spinner">
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+    <div class="ball ball-4"></div>
+</div>
 
-/*
- * table containing all configured sockets
- */
-$index=0;
-echo "<TABLE BORDER=\"0\">\n";
-foreach($config as $current) {
-  if ($current != "") {
-    $ig = $current[0];
-    $is = $current[1];
-    $id = $current[2];
+<div class="bs-docs-grid">
+    <div class="row show-grid" ng-repeat="device in data.devices" ng-switch="device.type" ng-click="toggleState(device)">
+         <?php echo daemon_send($target, $port, $output)?>
+        <div class="span1 pi443Item" ng-switch-when="fan" ng-switch="device.state">
+            {{device.name}}
+            <img class="pi443ItemImage fan" src="img/fan.svg" ng-switch-when="1" />
+            <img class="pi443ItemImage fan rotate" src="img/fan.svg" ng-switch-when="2" />
+        </div>
+        <div class="span1 pi443Item"  ng-switch-when="lamp" ng-switch="device.state">
+            {{device.name}}
+            <img class="pi443ItemImage lamp" src="img/lamp.svg" ng-switch-when="1" />
+            <img class="pi443ItemImage lamp" src="img/lamp_on.svg" ng-switch-when="2" />
+        </div>
+    </div>
+</div>
 
-    if ($index%2 == 0) echo "<TR>\n";
-
-    $output = $ig.$is."2";
-    $state = daemon_send($target, $port, $output);
-    if ($state == 0) {
-      $color=" BGCOLOR=\"#C00000\"";
-      $ia = 1;
-      $direction="on";
-    }
-    if ($state == 1) {
-      $color=" BGCOLOR=\"#00C000\"";
-      $ia = 0;
-      $direction="off";
-    }
-    echo "<TD class=outer ".$color.">\n";
-    echo "<TABLE><TR><TD class=inner BGCOLOR=\"#000000\">";
-    echo "<A CLASS=\"".$direction."\" HREF=\"?group=".$ig;
-    echo "&switch=".$is;
-    echo "&action=".$ia;
-    echo "&delay=".$nDelay."\">";
-    echo "<H3>".$id."</H3><BR />";
-    echo $ig.":".$is."<BR />";
-    echo "switch ".$direction;
-    echo "</A>";
-    echo "</TD>";
-    echo "</TR></TABLE>\n";
-    echo "</TD>\n";
-  }
-  else {
-    echo "<TD></TD>\n";
-  }
-  if ($index%2 == 1) echo "</TR>\n";
-  $index++;
-}
-echo "</TR></TABLE>";
-?>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/pi443_controller.js"></script>
 </body>
 </html>

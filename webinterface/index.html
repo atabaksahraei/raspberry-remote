@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="pi443App">
+<head>
+    <meta charset="utf-8">
+    <title>Pi443</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/pi443.css" rel="stylesheet" media="screen">
+    <script src="js/angular.min.js"></script>
+</head>
+<body ng-controller="pi443Ctrl">
+<h1>{{data.name}}</h1>
+<div class="spinner">
+    <div class="ball ball-1"></div>
+    <div class="ball ball-2"></div>
+    <div class="ball ball-3"></div>
+    <div class="ball ball-4"></div>
+</div>
+
+<div class="bs-docs-grid">
+    <div class="row show-grid" ng-repeat="device in data.devices" ng-switch="device.type" ng-click="toggleState(device)">
+        <div class="span1 pi443Item" ng-switch-when="fan" ng-switch="device.state">
+            {{device.name}}
+            <img class="pi443ItemImage fan" src="img/fan.svg" ng-switch-when="0" />
+            <img class="pi443ItemImage fan rotate" src="img/fan.svg" ng-switch-when="1" />
+        </div>
+        <div class="span1 pi443Item"  ng-switch-when="lamp" ng-switch="device.state">
+            {{device.name}}
+            <img class="pi443ItemImage lamp" src="img/lamp.svg" ng-switch-when="0" />
+            <img class="pi443ItemImage lamp" src="img/lamp_on.svg" ng-switch-when="1" />
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/pi443_controller.js"></script>
+</body>
+</html>
