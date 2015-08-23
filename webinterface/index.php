@@ -36,13 +36,13 @@ else $nDelay=0;
  */
 $output = $nGroup.$nSwitch.$nAction.$nDelay;
 if (strlen($output) >= 8) {
-  daemon_send($target, $port, $output);
-  header("Location: index.php?delay=$nDelay");
-  exit();
+    daemon_send($target, $port, $output);
+    header("Location: index.php?delay=$nDelay");
+    exit();
 }
 ?>
 <!DOCTYPE html>
-< lang="de" ng-app="pi443App">
+<html lang="de" ng-app="pi443App">
 <head>
     <meta charset="utf-8">
     <title>Pi443</title>
@@ -52,7 +52,7 @@ if (strlen($output) >= 8) {
     <link href="css/pi443.css" rel="stylesheet" media="screen">
     <script src="js/angular.min.js"></script>
 </head>
-< ng-controller="pi443Ctrl">
+<body ng-controller="pi443Ctrl">
 <h1>{{data.name}}</h1>
 <div class="spinner">
     <div class="ball ball-1"></div>
@@ -63,16 +63,15 @@ if (strlen($output) >= 8) {
 
 <div class="bs-docs-grid">
     <div class="row show-grid" ng-repeat="device in data.devices" ng-switch="device.type" ng-click="toggleState(device)">
-         <?php echo daemon_send($target, $port, $output)?>
         <div class="span1 pi443Item" ng-switch-when="fan" ng-switch="device.state">
             {{device.name}}
-            <img class="pi443ItemImage fan" src="img/fan.svg" ng-switch-when="1" />
-            <img class="pi443ItemImage fan rotate" src="img/fan.svg" ng-switch-when="2" />
+            <img class="pi443ItemImage fan" src="img/fan.svg" ng-switch-when="0" />
+            <img class="pi443ItemImage fan rotate" src="img/fan.svg" ng-switch-when="1" />
         </div>
         <div class="span1 pi443Item"  ng-switch-when="lamp" ng-switch="device.state">
             {{device.name}}
-            <img class="pi443ItemImage lamp" src="img/lamp.svg" ng-switch-when="1" />
-            <img class="pi443ItemImage lamp" src="img/lamp_on.svg" ng-switch-when="2" />
+            <img class="pi443ItemImage lamp" src="img/lamp.svg" ng-switch-when="0" />
+            <img class="pi443ItemImage lamp" src="img/lamp_on.svg" ng-switch-when="1" />
         </div>
     </div>
 </div>
