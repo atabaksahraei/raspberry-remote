@@ -8,14 +8,14 @@
       "name":"fan",
       "type":"fan",
       "region":"11111",
-      "deviceId":"2",
+      "deviceId":"02",
       "state":"0"
     },
     {
       "name":"meine Lampe",
       "type":"lamp",
       "region":"11111",
-      "deviceId":"4",
+      "deviceId":"04",
       "state":"1"
     }
   ]
