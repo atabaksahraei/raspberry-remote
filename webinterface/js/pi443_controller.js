@@ -21,7 +21,7 @@ pi443App.controller('pi443Ctrl',
                 device.state = "0";
             }
             var location='?group='+device.region+'&switch='+device.deviceId+"&action="+device.state+"delay="+device.delay;
-            //window.location = location;
+            window.location = location;
             console.info(location);
         }
     });
