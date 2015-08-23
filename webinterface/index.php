@@ -67,7 +67,7 @@ if (strlen($output) >= 8) {
 
 <div class="bs-docs-grid">
     <div class="row show-grid" ng-repeat="device in data.devices" ng-switch="device.type" ng-click="toggleState(device)">
-        <a class="span1 pi443Item" ng-switch-when="fan" ng-switch="device.state" href="'?group={{device.region}}&switch='+{{device.deviceId}}&action={{device.state}}delay={{device.delay}}">
+        <a class="span1 pi443Item" ng-switch-when="fan" ng-switch="device.state" href="?group={{device.region}}&switch={{device.deviceId}}&action={{device.state}}delay={{device.delay}}">
             {{device.name}}
             <img class="pi443ItemImage fan" src="img/fan.svg" ng-switch-when="0" />
             <img class="pi443ItemImage fan rotate" src="img/fan.svg" ng-switch-when="1" />
