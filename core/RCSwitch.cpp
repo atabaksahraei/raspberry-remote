@@ -1,6 +1,6 @@
 /*
   RCSwitch - Arduino libary for remote control outlet switches
-  Copyright (c) 2011 Suat Özgür.  All right reserved.
+  Copyright (c) 2011 Suat ï¿½zgï¿½r.  All right reserved.
 
   Contributors:
   - Andre Koehler / info(at)tomate-online(dot)de
@@ -439,6 +439,7 @@ void RCSwitch::send(unsigned long Code, unsigned int length) {
 
 void RCSwitch::send(char* sCodeWord) {
   for (int nRepeat=0; nRepeat<nRepeatTransmit; nRepeat++) {
+    printf(sCodeWord);
     int i = 0;
     while (sCodeWord[i] != '\0') {
       switch(sCodeWord[i]) {
