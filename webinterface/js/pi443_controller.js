@@ -20,7 +20,12 @@ pi443App.controller('pi443Ctrl',
                 console.log("turn off");
                 device.state = "0";
             }
-            var location='?group='+device.region+'&switch='+device.deviceId+'&action='+device.state+'delay='+device.delay;
+            var connection = new WebSocket('ws://192.168.2.110/:11337');
+
+            connection.onopen = function () {
+                connection.send('Ping'); // Send the message 'Ping' to the server
+            };
+            //var location='?group='+device.region+'&switch='+device.deviceId+'&action='+device.state+'delay='+device.delay;
            // window.location = location;
             console.info(location);
         }
