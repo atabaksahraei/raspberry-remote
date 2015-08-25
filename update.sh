@@ -1,17 +1,17 @@
 #!/bin/bash
 echo clean
-sudo rm -r /var/www/at/
+sudo rm -r /var/www/at/ > compile.log
 rm -r ~/raspberry-remote
 echo clone git repo
-git clone git://github.com/atabaksahraei/raspberry-remote.git
+git clone git://github.com/atabaksahraei/raspberry-remote.git >> compile.log
 echo copy webservice files
-sudo mkdir /var/www/at
-sudo cp ~/raspberry-remote/webinterface/* /var/www/at
-cd ~/raspberry-remote/core
+sudo mkdir /var/www/at >> compile.log
+sudo cp -r ~/raspberry-remote/webinterface/* /var/www/at >> compile.log
+cd ~/raspberry-remote/core >> compile.log
 echo compile: send
-make send
+make send >> compile.log
 echo compile: daemon
-make daemon
+make daemon >> compile.log
 echo run daemon
 sudo ./daemon
 cd ~
