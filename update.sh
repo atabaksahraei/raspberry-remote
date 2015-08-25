@@ -1,7 +1,7 @@
 #!/bin/bash
 echo clean
-sudo rm -r /var/www/at/ > compile.log
-rm -r ~/raspberry-remote
+sudo rm -r -f /var/www/at/ > compile.log
+rm -r -f ~/raspberry-remote
 echo clone git repo
 git clone git://github.com/atabaksahraei/raspberry-remote.git >> compile.log
 echo copy webservice files
