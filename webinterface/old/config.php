@@ -21,13 +21,8 @@ $port = 11337;
  *
  */
 $config=array(
-  array("00010", "01", "Schreibtisch"),
-  array("00010", "02", "Laptop"),
-  "",
-  "",
-  array("00001", "01", "Sofa Lampe"),
-  array("00001", "02", "Sofa Steckdose"),
-  array("00001", "03", "TV"),
-  array("00001", "04", "Verstaerker"),
+  array("11111", "01", "Fan"),
+    array("11111", "03", "light left"),
+    array("11111", "04", "light right"),
 )
 ?>
