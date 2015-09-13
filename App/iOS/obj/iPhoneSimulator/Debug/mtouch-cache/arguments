@@ -1,0 +1,37 @@
+# Version: 8.10.4.46 (2c66d2f)
+# [first argument, ignore] # /Users/atabaksahraei/Projects/Remote/iOS/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.10.4.46/bin/mtouch \
+	--cache \
+	/Users/atabaksahraei/Projects/Remote/iOS/obj/iPhoneSimulator/Debug/mtouch-cache \
+	--sim \
+	/Users/atabaksahraei/Projects/Remote/iOS/bin/iPhoneSimulator/Debug/Remote.iOS.app \
+	--executable \
+	RemoteiOS \
+	--debug \
+	--profiling \
+	--nolink \
+	--sdkroot \
+	/Applications/Xcode.app/Contents/Developer \
+	--sdk \
+	8.4 \
+	--targetver \
+	8.1 \
+	--abi=i386 \
+	--symbollist \
+	/Users/atabaksahraei/Projects/Remote/iOS/obj/iPhoneSimulator/Debug/mtouch-symbols.list \
+	--dsym=no \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
+	-r \
+	/Users/atabaksahraei/Projects/Remote/packages/Xamarin.TestCloud.Agent.0.13.0/lib/Xamarin.iOS10/Calabash.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
+	-r \
+	/Users/atabaksahraei/Projects/Remote/packages/Xamarin.TestCloud.Agent.0.13.0/lib/Xamarin.iOS10/Calabash.dll \
+	/Users/atabaksahraei/Projects/Remote/iOS/bin/iPhoneSimulator/Debug//Remote.iOS.exe \
