@@ -10,5 +10,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Remote.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestUI.xaml.cs">
+      <DependentUpon>TestUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SmartObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SynchronousSocketConnector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SmartManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SmartObjectType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TestUI.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

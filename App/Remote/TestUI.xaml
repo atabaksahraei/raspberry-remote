@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Remote.TestUI">
+	<ContentPage.Content>
+	<StackLayout>
+
+	<ListView
+	x:Name="listOfSmartObject" 
+	ItemsSource="{Binding SmartObjects, Mode=TwoWay}"
+	ItemSelected="OnItemSelected">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<ViewCell.ContextActions>
+						</ViewCell.ContextActions>
+						<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" HeightRequest="100">
+							<StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Horizontal">
+								<Image Source="{Binding Image, Mode=TwoWay}" VerticalOptions="Center" WidthRequest="30" />
+								<Label Text="{Binding Name, Mode=TwoWay}" YAlign="Center" FontSize="Medium" />
+							</StackLayout>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
