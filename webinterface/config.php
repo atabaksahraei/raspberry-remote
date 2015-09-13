@@ -10,7 +10,7 @@
 /*
  * define ip address and port here
  */
-$target = '192.168.11.124';
+$target = '192.168.2.114';
 $port = 11337;
 
 /*

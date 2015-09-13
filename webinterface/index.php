@@ -7,7 +7,7 @@
  *
 */
 
-$target = '192.168.2.110';
+$target = '192.168.2.114';
 $port = 11337;
 
 function daemon_send($target, $port, $output)
