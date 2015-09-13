@@ -5,6 +5,7 @@ sudo rm -r -f /var/www/at/ > compile.log
 #echo clone git repo
 #git clone git://github.com/atabaksahraei/raspberry-remote.git >> compile.log
 cd ~/raspberry-remote
+git reset --hard origin/master
 git pull
 echo copy webservice files
 sudo mkdir /var/www/at >> compile.log
