@@ -2,5 +2,5 @@
 cd ~/raspberry-remote
 ./cleanPort.sh
 cd core
-sudo ./daemon.sh &
+sudo ./daemon & >> daemon.log
 exit 0
