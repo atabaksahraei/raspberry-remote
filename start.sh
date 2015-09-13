@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/pi/raspberry-remote/
+cd ~/raspberry-remote/core
 sudo ./daemon &
 exit 0

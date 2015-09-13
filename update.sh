@@ -14,6 +14,7 @@ echo compile: send
 make send >> compile.log
 echo compile: daemon
 make daemon >> compile.log
-echo run daemon
-sudo ./daemon
+cd ~/raspberry-remote/
+echo run start
+sudo ./start.sh
 cd ~
