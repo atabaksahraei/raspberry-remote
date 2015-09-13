@@ -7,6 +7,6 @@ cd wiringPi
 ./build
 cd ~
 git clone git://github.com/atabaksahraei/raspberry-remote.git
-cp ~/raspberry-remote/update ~/update
+cp ~/raspberry-remote/update.sh ~/update.sh
 cd ~
-./update
+./update.sh
