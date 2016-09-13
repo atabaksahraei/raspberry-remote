@@ -33,10 +33,18 @@ namespace Remote
 			return _instance;
 		}
 
-		private SynchronousSocketConnector (string hostAdress, int port)
+		private SynchronousSocketConnector (string hostAddress, int port)
 		{
-			IPHostEntry ipHostInfo = Dns.Resolve (hostAdress);
-			IPAddress ipAddress = ipHostInfo.AddressList [0];
+//			try {
+			IPAddress ipAddress;
+			if (!hostAddress.StartsWith ("1")) {
+				IPHostEntry ipHostInfo = Dns.Resolve (hostAddress);
+				ipAddress = ipHostInfo.AddressList [0];
+			} else {
+				ipAddress = IPAddress.Parse (hostAddress);
+			}
+				
+
 
 			// Establish the remote endpoint for the socket.
 			// This example uses port 11000 on the local computer.
@@ -45,6 +53,11 @@ namespace Remote
 			// Create a TCP/IP  socket.
 			sender = new Socket (AddressFamily.InterNetwork, 
 				SocketType.Stream, ProtocolType.IP);
+				SmartManager.Instance.ConnectionState = ConnectionState.online;
+//			}catch(Exception e) {
+//				_instance = null;
+//				SmartManager.Instance.ConnectionState = ConnectionState.offline;
+//			}
 		}
 
 		public SmartObject TurnOn (SmartObject smartObject)
@@ -52,6 +65,7 @@ namespace Remote
 			string result = SendCode (smartObject.SystemCode, smartObject.RegionCode, "1");
 			if (string.IsNullOrEmpty (result) || string.IsNullOrWhiteSpace (result)) {
 				result = "-1";
+				SmartManager.Instance.ConnectionState = ConnectionState.offline;
 			}
 			smartObject.State = Convert.ToInt32 (result);
 			return smartObject;
@@ -63,6 +77,7 @@ namespace Remote
 			string result = SendCode (smartObject.SystemCode, smartObject.RegionCode, "0");
 			if (string.IsNullOrEmpty (result) || string.IsNullOrWhiteSpace (result)) {
 				result = "-1";
+				SmartManager.Instance.ConnectionState = ConnectionState.offline;
 			}
 			smartObject.State = Convert.ToInt32 (result);
 			return smartObject;

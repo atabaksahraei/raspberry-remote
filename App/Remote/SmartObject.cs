@@ -22,13 +22,13 @@ namespace Remote
 				if (Type == SmartObjectType.Fan) {
 					if (State == 0) {
 						return "fan_off.png";
-					} else {
+					} else if(State == 1){
 						return "fan_on.png";
 					}
 				} else if (Type == SmartObjectType.Light) {
 					if (State == 0) {
 						return "lamp_off.png";
-					} else {
+					} else if(State == 1){
 						return "lamp_on.png";
 					}
 				}

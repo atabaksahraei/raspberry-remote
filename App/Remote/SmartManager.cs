@@ -7,9 +7,43 @@ using System.Collections.Specialized;
 
 namespace Remote
 {
+	public enum ConnectionState
+	{
+		online,
+		offline,
+		unknow
+	}
+
 	public class SmartManager : GalaSoft.MvvmLight.ViewModelBase
 	{
 		private static SmartManager _instance = null;
+
+		public bool IsOnline {
+			get { 
+				if (ConnectionState == ConnectionState.online) {
+					return true;
+				}
+				return false;
+			}
+		}
+
+		public bool IsOffline {
+			get { 
+				if (ConnectionState == ConnectionState.offline) {
+					return true;
+				}
+				return false;
+			}
+		}
+
+		public ConnectionState ConnectionState {
+			get{ return _ConnectionState; }
+			set{ _ConnectionState = value;
+				RaisePropertyChanged ("ConnectionState");
+			}
+		}
+
+		private ConnectionState _ConnectionState { get; set; }
 
 		public static SmartManager Instance {
 			get {
@@ -20,7 +54,7 @@ namespace Remote
 			}
 		}
 
-		public ObservableCollection<SmartObject> SmartObjects{ get { return new ObservableCollection<SmartObject>(_smartObjects.OrderBy(x=> x.Name)); } }
+		public ObservableCollection<SmartObject> SmartObjects{ get { return new ObservableCollection<SmartObject> (_smartObjects.OrderBy (x => x.Name)); } }
 
 		ObservableCollection<SmartObject> _smartObjects;
 

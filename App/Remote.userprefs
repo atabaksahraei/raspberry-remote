@@ -1,8 +1,13 @@
 ﻿<Properties StartupItem="iOS/Remote.iOS.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone4s.8.4" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Remote/SynchronousSocketListener.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Remote/SynchronousSocketConnector.cs">
     <Files>
-      <File FileName="Remote/SynchronousSocketListener.cs" Line="20" Column="47" />
+      <File FileName="Remote/SmartManager.cs" Line="42" Column="43" />
+      <File FileName="Remote/TestUI.xaml" Line="1" Column="1" />
+      <File FileName="Remote/TestUI.xaml.cs" Line="20" Column="5" />
+      <File FileName="Remote/SmartObject.cs" Line="1" Column="1" />
+      <File FileName="Remote/SmartObjectType.cs" Line="1" Column="1" />
+      <File FileName="Remote/SynchronousSocketConnector.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

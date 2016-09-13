@@ -12,7 +12,13 @@ namespace Remote
 
 		public TestUI ()
 		{
-			SynchronousSocketConnector.InitializeSocket ("raspberrypi", 11337);
+			try{
+				SynchronousSocketConnector.InitializeSocket ("raspberrypi", 11337);
+
+				//SynchronousSocketConnector.InitializeSocket ("192.168.0.100", 11337);
+			}catch(Exception e) {
+				
+			}
 			guidFan = SmartManager.Instance.CreateSmartObjcet ("11111", "01", "Fan", SmartObjectType.Fan);
 			guidLightLeft = SmartManager.Instance.CreateSmartObjcet ("11111", "03", "Light Left");
 			guidLightRight = SmartManager.Instance.CreateSmartObjcet ("11111", "04", "Light right");
@@ -33,6 +39,12 @@ namespace Remote
 			await SmartManager.Instance.ToogleAsync (smartObject.SmartID);
 
 			((ListView)sender).SelectedItem = null; // de-select the row
+		}
+
+		public async void OnRetry (object sender, EventArgs e)
+		{
+			SmartManager.Instance.ConnectionState = ConnectionState.unknow;
+			SynchronousSocketConnector.InitializeSocket ("raspberrypi", 11337);
 		}
 
 	}

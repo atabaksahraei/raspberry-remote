@@ -6,13 +6,14 @@
 	<ListView
 	x:Name="listOfSmartObject" 
 	ItemsSource="{Binding SmartObjects, Mode=TwoWay}"
-	ItemSelected="OnItemSelected">
+	ItemSelected="OnItemSelected"
+	IsVisible="{Binding IsOnline, Mode=TwoWay}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
 						<ViewCell.ContextActions>
 						</ViewCell.ContextActions>
-						<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" HeightRequest="100">
+						<StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" HeightRequest="150">
 							<StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Horizontal">
 								<Image Source="{Binding Image, Mode=TwoWay}" VerticalOptions="Center" WidthRequest="30" />
 								<Label Text="{Binding Name, Mode=TwoWay}" YAlign="Center" FontSize="Medium" />
@@ -22,7 +23,11 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-
+		<StackLayout
+		IsVisible = "{Binding IsOffline, Mode=TwoWay}">
+			<Label Text="Raspberri not found :(" />
+			<Button Text = "Retry" Clicked="OnRetry"/>
+		</StackLayout>
 	</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
